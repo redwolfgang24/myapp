@@ -57,3 +57,13 @@ typings/
 # dotenv environment variables file
 .env
 
+/dist
+/logs
+/npm-debug.log
+/npm-debug.log*
+/node_modules
+/uploads
+/public/uploads
+.DS_Store
+.idea
+package-lock.json

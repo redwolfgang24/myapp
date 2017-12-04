@@ -1,0 +1,377 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Sample spec",
+    "description": "Sample spec for Swagger",
+    "termsOfService": "http://swagger.io/terms/"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Jobs",
+      "description": "API for jobs"
+    },
+    {
+      "name": "Users",
+      "description": "API for users"
+    },
+    {
+      "name": "Applications",
+      "description": "API for applications"
+    }
+  ],
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "For creating a new user",
+        "operationId": "for the URL",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "User Parameters",
+            "in": "body",
+            "description": "User to add to the database",
+            "required": true,
+            "schema": {
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "required": true,
+                  "example": "dummyviseo2017@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "required": true,
+                  "example": "123456789"
+                }
+              }
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/createUser"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Return a single user",
+        "operationId": "for the URL",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id to fetch",
+            "required": true,
+            "type": "string",
+            "example": "5948a1b8b2f3cc3c9572bc53"
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/getUserByID"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{id}/profiles": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Return a single user profile",
+        "operationId": "for the URL",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id to fetch",
+            "required": true,
+            "type": "string",
+            "example": "5948a1b8b2f3cc3c9572bc53"
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/getProfileByID"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "For creating user profile",
+        "operationId": "for the URL",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id to fetch",
+            "required": true,
+            "type": "string",
+            "example": "5948a1b8b2f3cc3c9572bc53"
+          },
+          {
+            "name": "User Profile Parameters",
+            "in": "body",
+            "description": "User profile to be created",
+            "required": true,
+            "schema": {
+              "properties": {
+                "emailAddress": {
+                  "type": "string",
+                  "required": true,
+                  "example": "dummyviseo2017@gmail.com"
+                },
+                "firstName": {
+                  "type": "string",
+                  "required": true,
+                  "example": "Dummy"
+                },
+                "lastName": {
+                  "type": "string",
+                  "required": true,
+                  "example": "Account"
+                },
+                "birthDate": {
+                  "type": "string",
+                  "required": true,
+                  "example": "2017-12-04"
+                },
+                "civilStatus": {
+                  "type": "string",
+                  "required": true,
+                  "example": "Single"
+                },
+                "mobile": {
+                  "type": "string",
+                  "required": true,
+                  "example": "555555555"
+                }
+              }
+            }
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/getProfileByID"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{id}/profiles/{profileId}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "description": "For updating a user profile",
+        "operationId": "for the URL",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user id to fetch",
+            "required": true,
+            "type": "string",
+            "example": "5948a1b8b2f3cc3c9572bc53"
+          },
+          {
+            "name": "profileId",
+            "in": "path",
+            "description": "profile id to be deleted",
+            "required": true,
+            "type": "string",
+            "example": "5948a1b8b2f3cc3c9572bc54"
+          },
+          {
+            "name": "profile update parameters",
+            "in": "body",
+            "description": "Profile to be updated in database",
+            "required": true,
+            "schema": {
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "required": false,
+                  "example": "Dummy"
+                },
+                "lastName": {
+                  "type": "string",
+                  "required": false,
+                  "example": "Account"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/getProfileByID"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "createUser": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "example": "5948a1b8b2f3cc3c9572bc53"
+        },
+        "email": {
+          "type": "string",
+          "required": true,
+          "example": "dummyviseo2017@gmail.com"
+        }
+      }
+    },
+    "getUserByID": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "example": "5948a1b8b2f3cc3c9572bc53"
+        },
+        "email": {
+          "type": "string",
+          "required": true,
+          "example": "dummyviseo2017@gmail.com"
+        },
+        "profile": {
+          "type": "json",
+          "required": true,
+          "example": {
+            "_id": "5948a1b8b2f3cc3c9572bc54",
+            "emailAddress": "dummyviseo2017@gmail.com",
+            "firstName": "Dummy",
+            "lastName": "Account",
+            "user": "5948a1b8b2f3cc3c9572bc53",
+            "createdAt": "2017-12-04T04:16:56.871Z",
+            "updatedAt": "2017-12-04T04:20:34.103Z",
+            "birthDate": "2017-12-04",
+            "civilStatus": "Single",
+            "mobile": "555555555"
+          }
+        }
+      }
+    },
+    "getProfileByID": {
+      "properties": {
+        "emailAddress": {
+          "type": "string",
+          "required": true,
+          "example": "dummyviseo2017@gmail.com"
+        },
+        "firstName": {
+          "type": "string",
+          "required": true,
+          "example": "Dummy"
+        },
+        "lastName": {
+          "type": "string",
+          "required": true,
+          "example": "Account"
+        },
+        "birthDate": {
+          "type": "string",
+          "required": true,
+          "example": "2017-12-04"
+        },
+        "civilStatus": {
+          "type": "string",
+          "required": true,
+          "example": "Single"
+        },
+        "mobile": {
+          "type": "string",
+          "required": true,
+          "example": "555555555"
+        },
+        "id": {
+          "type": "string",
+          "required": true,
+          "example": "5948a1b8b2f3cc3c9572bc54"
+        }
+      }
+    }
+  }
+}
